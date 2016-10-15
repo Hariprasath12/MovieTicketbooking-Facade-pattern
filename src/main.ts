@@ -1,3 +1,5 @@
+
+
 class Review {
          private static reviewdb:any=[];
       
@@ -36,16 +38,24 @@ class payment {
 
  makepaymentFormovie(Moviename:string,place:string,screen:string,seats:number,show:string) {
      var movie= payment.paymentdb.filter((i:any)  => (i.Movie==Moviename && i.place==place) );
-     movie.forEach((i:any) =>console.log(i));
+     // movie.forEach((i:any) =>console.log(i));
        if(movie.length!==0){
           var se= movie.filter((i:any) =>i.show==show);
-            se.forEach((i:any) =>console.log(i));
+            // se.forEach((i:any) =>console.log(i));
                 if(se.length!==0){
                     var me=se.filter((i:any) =>i.nOfSeats>=seats);
                      if(me.length!==0){
-                       // var a= payment.paymentdb.map(i=>(i.Movie==Moviename && i.place==place && i.show==show && i.nOfSeats>=seats) );
-                        // var a=payment.paymentdb.findIndex(me[0]);
-                        // console.log(a);
+                       
+                         for (var i in payment.paymentdb) {
+     if (payment.paymentdb[i].Movie == Moviename && payment.paymentdb[i].place==place && payment.paymentdb[i].show==show ) {
+        payment.paymentdb[i].nOfSeats =payment.paymentdb[i].nOfSeats-seats;
+        console.log("Movie Booked");
+        break; 
+     }
+   }
+
+
+
                      }
                      else{
                    console.log("seats are full");
@@ -67,6 +77,12 @@ class payment {
 
        } 
      
+      alldetails(){
+   console.log("Movie     place      show       Name of screen   available seats");
+   for (let value of payment.paymentdb) {
+ console.log(value.Movie+'       '+value.place+'        '+value.show+'        '+value.Nameofscreen+'     '+value.nOfSeats);
+}
+ }
      
 
  }
@@ -99,12 +115,7 @@ for (let value of mov) {
   console.log(value.Nameofscreen);
 }
  }
- alldetails(){
-   console.log("Movie     place      show       Name of screen   available seats");
-   for (let value of search.searchdb) {
- console.log(value.Movie+'       '+value.place+'        '+value.show+'        '+value.Nameofscreen+'     '+value.nOfSeats);
-}
- }
+
  
      
      
@@ -128,7 +139,7 @@ class system{
 
     }
     Alldetails(){
-      this.s.alldetails();
+      this.p.alldetails();
     }
     searchByPlace(place:string){
      this.s.listOfMovies(place);
@@ -145,4 +156,12 @@ class system{
 
 const sa=new system();
 sa.adddetails("remo","vellore","galaxy",120,"evening",120);
+sa.adddetails("i","vellore","galaxy",120,"evening",120);
+sa.adddetails("kodi","vellore","galaxy",120,"evening",120);
+sa.adddetails("okok","vellore","galaxy",120,"evening",120);
+
+sa.searchByMovie("vellore","i");
+
+// sa.makePayment("okok","vellore","galaxy",3,"evening");
+// sa.makePayment("okok","vellore","galaxy",119,"evening");
 sa.Alldetails();
