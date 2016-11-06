@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<title>Justclick</title>
+	<link rel="stylesheet" href="index.css">
+	<!-- Latest compiled and minified CSS -->
+	 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+<script src="./dist/main.js"></script>
+<style type="text/css" media="screen">
+	
+
+/*table,td{
+    border: 1px solid black;
+    width: 100px;
+}*/
+/*body{
+	background-color: #CFE7B6;
+}*/
+h3{
+	color: #53B6C6;
+}
+.navbar{
+  	border: 0px;
+  	border-radius: 0px;
+  margin: 0px;
+  font-size: 15px;
+  }
+.mainindex{
+	padding: 60px;
+
+
+}
+
+#getreview,#setcmd,#setstar,#setmoviename{
+	width: 200px;
+}
+#form-horizontal{
+
+	width: 250px;
+
+}
+#addshowtime,#addprice,#addnoofseats,#addplace,#addscreenname,#addmoviename{
+	width: 400px;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Justclick</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-right list-inline">
+        <button type="button"   class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lgaddshow">Add show</button>
+        </ul>
+      </div>
+      </div>
+    </nav>
+
+
+ </div>
+
+
+<div class="modal fade bs-example-modal-lgaddshow" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" >
+    <h3> Add show</h3>
+    <hr> 
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Movie Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="addmoviename" placeholder="Movie" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">screen Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="addscreenname" placeholder="screen Name" required>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="col-sm-2 control-label">Place</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="addplace" placeholder="Place" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">No of seats</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="addnoofseats" placeholder="seats" required>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="col-sm-2 control-label">show</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="addshowtime" placeholder="show" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Price</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="addprice" placeholder="price" required>
+    </div>
+  </div>
+
+  
+ 
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-primary"  id="addshow" >Add Show</button>
+    </div>
+  </div>
+</form>
+
+
+     
+    </div>
+  </div>
+</div>
+
+
+ <div class="container mainindex">
+<div class="row"> 
+<div class="col-sm-8"> 
+<h3> View screens</h3>
+<hr> 
+<form class="form-inline">
+  <div class="form-group">
+
+    <label >Movie Name</label>
+    <input type="text" class="form-control" id="moviename"  placeholder="Movie Name" required>
+  </div>
+  <div class="form-group">
+    <label >Place</label>
+    <input type="text" class="form-control" id="movie_place"  placeholder="place" required>
+  </div>
+  
+  
+  <button type="button"  id="viewmovie" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">View</button>
+</form>
+
+
+
+<!-- Large modal -->
+<!-- <button type="button" >Large modal</button> -->
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" >
+<table id="searchbymandp" class='table table-hover'> </table>
+     
+    </div>
+  </div>
+</div>
+
+
+<hr> 
+<h3> Get all Screens</h3>
+<button type="button"  id="getdetails" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lgf">Get movie details</button>
+
+<div class="modal fade bs-example-modal-lgf" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" >
+<table id="displaygetmovie" class='table table-hover'> </table>
+     
+    </div>
+  </div>
+</div>
+
+<hr> 
+<h3>BookTicket </h3>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Movie Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="bookmoviename" placeholder="Movie" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">screen Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="bookscreenname" placeholder="screen Name" required>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="col-sm-2 control-label">Place</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="bookplace" placeholder="Place" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">No of seats</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="noofseats" placeholder="seats" required>
+    </div>
+  </div>
+   <div class="form-group">
+    <label class="col-sm-2 control-label">show</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="bookshow" placeholder="show" required>
+    </div>
+  </div>
+
+  
+ 
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-primary"  id="payment" >Book Ticket</button>
+    </div>
+  </div>
+</form>
+
+
+
+</div>
+<div class="col-sm-3  ">
+<div class="container">
+<h3> Get Review</h3>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Movie Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="getreview" placeholder="Movie">
+    </div>
+  </div>
+  
+ 
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default"  id="getreviewsubmit" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lgr">Get Review</button>
+    </div>
+  </div>
+</form>
+<div class="modal fade bs-example-modal-lgr" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" >
+<table id="displayreview" class='table table-hover'> </table>
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+<hr> 
+<div class="container"> 
+<h3>Review the Movie </h3>
+
+
+
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Movie Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="setmoviename" placeholder="Movie">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Star</label>
+    <div class="col-sm-10">
+     <select class="form-control" id="setstar">
+  <option>1</option>
+  <option>2</option>          
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">cmd</label>
+    <div class="col-sm-10">
+ <textarea class="form-control" rows="3" id="setcmd"></textarea>    
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default"  id="setreviewsubmit">Set Review</button>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+
+</div>
+
+
+
+<!-- row2 -->
+ </div>
+
+
+
+
+
+</div>
+
+
+</div>
+<script type="text/javascript">
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+
+
+$(document).ready(function(){
+var sa = new system();
+
+
+$("#viewmovie").click(function(){
+	
+	
+	
+	//book($("#addname").val(),$("#addseats").val())
+	// display()
+movie=$("#moviename").val();
+place=$("#movie_place").val();
+console.log(movie);
+console.log(place);
+value=sa.searchByMovie(place,movie);
+console.log(value.Nameofscreen);
+// "Hello\nHow are you?
+$("#searchbymandp").html("");
+	// alert('Movie Name:'+value[0].Nameofscreen+'\nshow:'+value[0].show+'\nPlace:'+value[0].place+'\nprice:'+value[0].price+'');
+	// swal("Here's a message!");
+// $("#searchbymandp").append(
+
+// 	);
+$("#searchbymandp").append("<thead>");
+	$("#searchbymandp").append("<tr><th>Movie</th><th>Theatre</th><th>Seats</th><th>Place</th><th>Price</th><th>Show</th></tr>");
+
+
+	
+	$("#searchbymandp").append("</thead");
+	$("#searchbymandp").append("<tbody>");
+	// </thead>
+	for(var i=0;i<value.length;i++){
+	// console.log(data[i]["Movie"]);
+	//$("#displaygetmovie").append(data[i]["Movie"]+" "+data[i]["Nameofscreen"]+" "+data[i]["nOfSeats"]+" "+data[i]["place"]+" "+data[i]["price"]+" "+data[i]["show"]+"<br>");
+	$("#searchbymandp").append('<tr><td>'+value[i]['Movie']+'</td><td>'+value[i]['Nameofscreen']+'</td><td>'+value[i]['nOfSeats']+'</td><td>'+value[i]['place']+'</td><td>'+value[i]['price']+'</td><td>'+value[i]['show']+'</tr>')
+	}
+	$("#searchbymandp").append("</tbody>");
+
+
+});
+
+//console.log(movies)
+
+//display()
+
+$("#getdetails").click(function(){
+	
+	var data=sa.Alldetails()
+	//console.log(sa.Alldetails())
+	console.log(data)
+	//$("#displaygetmovie").html(data[1]["Movie"]);
+	
+	$("#displaygetmovie").html("");
+	// $("#displaygetmovie").append("<table >");
+	$("#displaygetmovie").append("<thead>");
+	$("#displaygetmovie").append("<tr><th>Movie</th><th>Theatre</th><th>Seats</th><th>Place</th><th>Price</th><th>Show</th></tr>");
+
+
+	
+	$("#displaygetmovie").append("</thead");
+	$("#displaygetmovie").append("<tbody>");
+	// </thead>
+	for(var i=0;i<data.length;i++){
+	// console.log(data[i]["Movie"]);
+	//$("#displaygetmovie").append(data[i]["Movie"]+" "+data[i]["Nameofscreen"]+" "+data[i]["nOfSeats"]+" "+data[i]["place"]+" "+data[i]["price"]+" "+data[i]["show"]+"<br>");
+	$("#displaygetmovie").append('<tr><td>'+data[i]['Movie']+'</td><td>'+data[i]['Nameofscreen']+'</td><td>'+data[i]['nOfSeats']+'</td><td>'+data[i]['place']+'</td><td>'+data[i]['price']+'</td><td>'+data[i]['show']+'</tr>')
+	}
+	$("#displaygetmovie").append("</tbody>");
+
+	//$("#displaygetmovie").append("</table>")
+});
+
+$("#getreviewsubmit").click(function(){
+
+	moviereview=$("#getreview").val();
+	var review=sa.getreview(moviereview);
+	//console.log(sa.Alldetails())
+	console.log(review);
+	//$("#displaygetmovie").html(data[1]["Movie"]);
+	
+	$("#displayreview").html("");
+	// $("#displaygetmovie").append("<table >");
+	$("#displayreview").append("<thead>");
+	$("#displayreview").append("<tr><th>Movie</th><th>Star</th><th>cmd</th></tr>");
+
+
+	
+	$("#displayreview").append("</thead");
+	$("#displayreview").append("<tbody>");
+	// </thead>
+	for(var i=0;i<review.length;i++){
+	// console.log(data[i]["Movie"]);
+	//$("#displaygetmovie").append(data[i]["Movie"]+" "+data[i]["Nameofscreen"]+" "+data[i]["nOfSeats"]+" "+data[i]["place"]+" "+data[i]["price"]+" "+data[i]["show"]+"<br>");
+	$("#displayreview").append('<tr><td>'+review[i]['Movie']+'</td><td>'+review[i]['star']+'</td><td>'+review[i]['cmd']+'</tr>')
+	}
+	$("displayreview").append("</tbody>");
+
+	//$("#displaygetmovie").append("</table>")
+});
+
+$("#setreviewsubmit").click(function(){
+
+	setmoviereview=$("#setmoviename").val();
+	setstar=$("#setstar").val();
+	setcmd=$("#setcmd").val();
+    sa.setreview(setmoviereview,setstar,setcmd);
+    
+// alert("Review added");
+
+
+	
+	
+});
+
+$("#payment").click(function(){
+
+	payseats=$("#noofseats").val();
+	payplace=$("#bookplace").val();
+	payscreen=$("#bookscreenname").val();
+	paymovie=$("#bookmoviename").val();
+	payshow=$("#bookshow").val();
+     // alert(payseats);
+     // alert(payplace);
+     // alert(payscreen);
+     // alert(paymovie);
+     // alert(payshow);$("#noofseats").val()="";
+    
+     console.log(payplace);
+    // sa.setreview(setmoviereview,setstar,setcmd);
+ sa.makePayment(paymovie,payplace,payscreen,payseats,payshow);
+
+$("#bookplace").val("");
+    $("#bookscreenname").val("");
+    $("#bookmoviename").val("");
+    $("#bookshow").val("");
+    $("#noofseats").val("");
+
+// alert("Review added");
+
+
+	
+	
+});
+
+
+$("#addshow").click(function(){
+
+	addseats=$("#addnoofseats").val();
+	addplace=$("#addplace").val();
+	addscreen=$("#addscreenname").val();
+	addmovie=$("#addmoviename").val();
+	addshowtime=$("#addshowtime").val();
+	addprice=$("#addprice").val();
+	$("#addnoofseats").val("");
+	$("#addplace").val("");
+	$("#addmoviename").val("");
+	$("#addscreenname").val("");
+	$("#addshowtime").val("");
+	$("#addprice").val("");
+    
+sa.adddetails(addmovie, addplace, addshowtime, addprice, addshowtime, addseats);
+
+    
+// alert("Review added");
+
+
+	
+	
+});
+   
+
+
+
+
+
+
+
+
+});
+
+
+</script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7x" crossorigin="anonymous"></script>
+</body>
+</html>
